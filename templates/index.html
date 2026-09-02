@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Career System</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Top Navbar */
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .navbar a {
+        text-decoration: none;
+    }
+
+    .nav-btn {
+        padding: 8px 15px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        background: linear-gradient(to right, #3498db, #5dade2);
+    }
+
+    .nav-btn:hover {
+        background: linear-gradient(to right, #2980b9, #3498db);
+    }
+
+    .admin-btn {
+        background: linear-gradient(to right, #8e44ad, #9b59b6);
+    }
+
+    /* Center Title */
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 1;
+    }
+
+    .center h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .center p {
+        font-size: 18px;
+        color: #ccc;
+    }
+
+    /* Background circle */
+    .circle {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 20%;
+        left: 60%;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        color: #ccc;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+
+<!-- 🔝 NAVBAR -->
+<div class="navbar">
+    <a href="{{ url_for('signup') }}">
+        <button class="nav-btn">Register</button>
+    </a>
+
+    <a href="{{ url_for('login') }}">
+        <button class="nav-btn">Login</button>
+    </a>
+
+    <a href="{{ url_for('admin') }}">
+        <button class="nav-btn admin-btn">Admin</button>
+    </a>
+</div>
+
+<!-- 🎯 CENTER TITLE -->
+<div class="center">
+    <h1>AI Based Skill Assessment & Career Recommendation System</h1>
+    <p>Discover your skills. Find your career path.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 AI Career System
+</div>
+
+</body>
+</html>

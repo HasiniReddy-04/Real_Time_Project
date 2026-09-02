@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+     <style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+
+        /* 🎨 Premium gradient */
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+    }
+
+    /* 🟡 Soft design circle */
+    .circle {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 20%;
+        left: 65%;
+        z-index: 0;
+    }
+
+    .header {
+        position: relative;
+        z-index: 1;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    /* 💎 Glass card */
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        width: 320px;
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background: rgba(255,255,255,0.2);
+        color: white;
+    }
+
+    input::placeholder {
+        color: #ddd;
+    }
+
+    input:focus {
+        outline: none;
+        border: 1px solid #3498db;
+        box-shadow: 0 0 5px rgba(52,152,219,0.4);
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: linear-gradient(to right, #3498db, #5dade2);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: linear-gradient(to right, #2980b9, #3498db);
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    a {
+        color: #5dade2;
+        text-decoration: none;
+    }
+
+    /* 🔴 Error box */
+    .error-box {
+        background: rgba(255, 0, 0, 0.2);
+        color: #ff6b6b;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    /* 👁️ alignment */
+    .show-pass {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        margin-bottom: 15px;
+        color: #ddd;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>AI Based Skill Assessment and Career Recommendation System</h1>
+</div>
+
+<div class="container">
+    <div class="card">
+
+        <h2>Login</h2>
+
+        <!-- 🔴 Error Message -->
+        {% if error %}
+            <div class="error-box">
+                <span>{{ error }}</span>
+                <span>❌</span>
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- 👁️ Show Password -->
+            <div class="show-pass">
+                <input type="checkbox" onclick="togglePassword()">
+                <label>Show Password</label>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="footer">
+            <p>New user? <a href="{{ url_for('signup') }}">Create account</a></p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function togglePassword() {
+    var pass = document.getElementById("password");
+    pass.type = (pass.type === "password") ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

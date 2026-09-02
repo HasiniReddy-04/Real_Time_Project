@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Success</title>
+
+    <style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+
+        /* 🎨 Premium gradient */
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+    }
+
+    /* 🟡 Decorative circle */
+    .circle {
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 25%;
+        left: 65%;
+        z-index: 0;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* 💎 Glass card */
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        width: 350px;
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
+        text-align: center;
+        color: white;
+    }
+
+    h2 {
+        color: #2ecc71;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: #ddd;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: linear-gradient(to right, #3498db, #5dade2);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <h2>✅ Signup Successful!</h2>
+        <p>Your account has been created successfully.</p>
+
+        <a href="/login">
+            <button>Go to Login</button>
+        </a>
+
+    </div>
+</div>
+
+</body>
+</html>

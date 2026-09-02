@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 100vh;
+    }
+
+    .circle {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 20%;
+        left: 60%;
+        z-index: 0;
+    }
+
+    .header {
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+    }
+
+    .logout {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+    }
+
+    .logout button {
+        background: red;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        width: 95%;
+        max-width: 1000px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: center;
+    }
+
+    table th {
+        background: rgba(255,255,255,0.2);
+    }
+
+    table tr:nth-child(even) {
+        background: rgba(255,255,255,0.05);
+    }
+
+    .delete-btn {
+        background: red;
+        border: none;
+        padding: 6px 12px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .view-btn {
+        background: #3498db;
+        border: none;
+        padding: 6px 12px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .footer {
+        text-align: center;
+        color: #ccc;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+
+<div class="header">
+    <h1>Admin Dashboard</h1>
+</div>
+
+<div class="logout">
+    <a href="{{ url_for('admin_logout') }}">
+        <button>Logout</button>
+    </a>
+</div>
+
+<div class="container">
+    <div class="card">
+
+        <!-- 👥 USERS SECTION -->
+        <h2>Registered Users</h2>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Action</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{ user[1] }}</td>
+                <td>
+                    <a href="/view_user_jobs/{{ user[1] }}">
+                        <button class="view-btn">View Jobs</button>
+                    </a>
+
+                    <a href="/delete_user/{{ user[0] }}">
+                        <button class="delete-btn">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- 💼 SAVED JOBS SECTION -->
+        <h2>Saved Jobs</h2>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Job Title</th>
+                <th>Company</th>
+            </tr>
+
+            {% for job in saved_jobs %}
+            <tr>
+                <td>{{ job[0] }}</td>
+                <td>{{ job[1] }}</td>
+                <td>{{ job[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</div>
+
+<div class="footer">
+    © 2026 AI Career System
+</div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+
+    <style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+
+        /* 🎨 Premium gradient */
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 100vh;
+    }
+
+    /* 🟡 Decorative circle */
+    .circle {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 20%;
+        left: 70%;
+        z-index: 0;
+    }
+
+    .header {
+        position: relative;
+        z-index: 1;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        width: 85%;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    /* 💎 Glass cards */
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
+        color: white;
+    }
+
+    h2, h3 {
+        color: white;
+    }
+
+    p {
+        color: #ddd;
+    }
+
+    /* 🎯 Highlight score */
+    .score {
+        font-size: 28px;
+        font-weight: bold;
+        color: #2ecc71;
+    }
+
+    .career {
+        font-size: 22px;
+        color: #f1c40f;
+    }
+
+    /* 🔘 Button */
+    .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 15px;
+        background: linear-gradient(to right, #3498db, #5dade2);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    /* 🔴 Logout */
+    .logout {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+    }
+
+    .logout button {
+        background: red;
+        border: none;
+        padding: 8px 12px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🎯 Your Result</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Score: {{ score }}</h2>
+        <h2>Recommended Career: {{ career }}</h2>
+    </div>
+
+    <div class="card">
+        <h3>📈 Areas to Improve</h3>
+        <p>{{ improvement }}</p>
+    </div>
+
+    <div class="card">
+        <h3>💡 Motivation</h3>
+        <p>{{ motivation }}</p>
+    </div>
+
+
+    <h2>💼 Job Recommendations</h2>
+
+<a href="/jobs">
+    <button style="padding:10px 20px; background:#3498db; color:white; border:none; border-radius:5px;">
+        View Job Recommendations
+    </button>
+</a>
+<div style="position:absolute; top:20px; right:20px;">
+    <a href="/logout" class="btn-logout">Logout
+        <button style="background:red;">Logout</button>
+    </a>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+        overflow: hidden;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    h2 {
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+
+    .branches {
+        display: grid;
+        grid-template-columns: repeat(3, 150px);
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .branch-box {
+        padding: 20px;
+        border-radius: 10px;
+        background: linear-gradient(to right, #3498db, #5dade2);
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .branch-box:hover {
+        transform: scale(1.1);
+        background: linear-gradient(to right, #2980b9, #3498db);
+    }
+
+    .circle {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 20%;
+        left: 60%;
+    }
+</style>
+
+<div class="circle"></div>
+
+<div class="container">
+    <h1>AI BASED SKILL ASSESSMENT TEST</h1>
+    <h2>Select Your Branch</h2>
+
+    <div class="branches">
+        <div class="branch-box" onclick="goToTest('CSE')">CSE</div>
+        <div class="branch-box" onclick="goToTest('ECE')">ECE</div>
+        <div class="branch-box" onclick="goToTest('EEE')">EEE</div>
+        <div class="branch-box" onclick="goToTest('MECH')">MECH</div>
+        <div class="branch-box" onclick="goToTest('CIVIL')">CIVIL</div>
+        <div class="branch-box" onclick="goToTest('MME')">MME</div>
+    </div>
+</div>
+
+<script>
+function goToTest(branch) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/select_branch';
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'branch';
+    input.value = branch;
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>

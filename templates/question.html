@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question</title>
+
+    <style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+
+        /* 🎨 Premium gradient */
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        min-height: 100vh;
+    }
+
+    /* 🟡 Decorative circle */
+    .circle {
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        background: rgba(255, 193, 7, 0.15);
+        border-radius: 50%;
+        top: 20%;
+        left: 70%;
+        z-index: 0;
+    }
+
+    .header {
+        position: relative;
+        z-index: 1;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        width: 60%;
+        margin: 40px auto;
+    }
+
+    /* 💎 Glass card */
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
+        color: white;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .timer {
+        font-size: 16px;
+        color: #ff6b6b;
+        text-align: right;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .progress {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    /* 🎯 Options styling */
+    .option {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 6px;
+        background: rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .option:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
+    input[type="radio"] {
+        margin-right: 8px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px;
+        width: 100%;
+        background: linear-gradient(to right, #3498db, #5dade2);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: linear-gradient(to right, #2980b9, #3498db);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>AI Skill Assessment Test</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="progress">
+            Question {{ qno }}
+        </div>
+
+        <div id="timer" class="timer"></div>
+
+        <form method="POST">
+
+            <h2>{{ q.question }}</h2>
+
+            {% for option in q.options %}
+                <div class="option">
+                    <input type="radio" name="answer" value="{{ option }}" required>
+                    {{ option }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Next</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+let time = Number("{{ remaining }}") || 0;
+
+let timer = document.getElementById("timer");
+
+let countdown = setInterval(function() {
+
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    timer.innerHTML = "⏱️ Time Left: " + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+    time--;
+
+    if(time < 0){
+        clearInterval(countdown);
+        document.forms[0].submit();
+    }
+
+}, 1000);
+</script>
+
+</body>
+</html>

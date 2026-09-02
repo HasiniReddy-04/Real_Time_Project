@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Submitted</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px 5px 0 5px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+        }
+        .jobs  { background: linear-gradient(to right, #3498db, #2980b9); }
+        .saved { background: linear-gradient(to right, #27ae60, #2ecc71); }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div style="font-size:70px;">✅</div>
+    <h1>Application Submitted!</h1>
+    <p>You have successfully applied for:</p>
+    <h2>{{ title }}</h2>
+    <p>at <b>{{ company }}</b></p>
+    <p style="color:#f1c40f;">Your application is under review by the admin.</p>
+    <a href="/jobs" class="btn jobs">Back to Jobs</a>
+    <a href="/saved_jobs" class="btn saved">View Saved Jobs</a>
+</div>
+</body>
+</html>
